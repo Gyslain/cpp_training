@@ -15,34 +15,51 @@ Hello::Hello() : word("Hello world!"), id(global_counter) // id est constant, il
 {
     increment_global_counter();
     print_object_id();
-    cout << " : Appel du constructeur par defaut.\n";
+    cout << "Appel du constructeur par defaut.\n";
 }
 
+// constructeur avec parametres
 Hello::Hello(std::string word_) : word(word_), id(global_counter)
 {
     increment_global_counter();
     print_object_id();
-    cout << " : Appel du constructeur avec parametres.\n";
+    cout << "Appel du constructeur avec parametres.\n";
 }
 
+// constructeur par copie
 Hello::Hello(const Hello &hello) : word(hello.word), id(global_counter)
 {
     increment_global_counter();
     print_object_id();
-    cout << " : Appel du constructeur par copie.";
-    cout << " Copie de l'objet " << hello.id << endl;
+    cout << "Appel du constructeur par copie.";
+    cout << " Copie de ";
+    hello.print_object_id();
+    cout << endl;
 }
 
+// constructeur par deplacement
+Hello::Hello(Hello &&hello) : word(std::move(hello.word)), // utilisation de std::move pour deplacer
+                              id(global_counter)
+{
+    increment_global_counter();
+    print_object_id();
+    cout << "Appel du constructeur par deplacement.";
+    cout << " Move de ";
+    hello.print_object_id();
+    cout << endl;
+}
+
+// destructeur (unique)
 Hello::~Hello()
 {
     print_object_id();
-    cout << " : Appel du destruceur.\n";
+    cout << "Appel du destruceur.\n";
 }
 
 void Hello::speak() const
 {
     print_object_id();
-    cout << " : " << word << endl;
+    cout << word << endl;
 }
 
 int Hello::get_id() const
@@ -52,7 +69,8 @@ int Hello::get_id() const
 
 void Hello::print_object_id() const
 {
-    cout << "Object " << id;
+    // this est le pointeur de l'objet courant. C'est l'adresse memoire de l'objet.
+    cout << "Object " << id << " (" << this << ") ";
 }
 
 int Hello::increment_global_counter()

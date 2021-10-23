@@ -5,19 +5,20 @@
 class Hello // nom de la classe
 {
 public: // acces public
-    // constructeurs (ne renvoient pas d'objets)
-    Hello();                 // defaut
-    Hello(std::string word); // parametres
-    Hello(const Hello &);    // par copie
+    // constructeurs (pas de retour)
+    Hello();              // defaut
+    Hello(std::string);   // parametres
+    Hello(const Hello &); // par copie
+    Hello(Hello &&);      // par deplacement
 
     // un seul destructeur doit etre present
     ~Hello();
 
     // methods
-    void speak() const; // la methode ne modifie pas l'objet
+    void speak() const; // la methode const ne modifie pas l'objet
 
     // accesseur public aux donnees privees
-    int get_id() const;
+    int get_id() const; // acces en lecture (methode const)
 
     static int get_global_counter();
 
