@@ -27,16 +27,17 @@ int main(int argc, char **argv)
     cout << endl;
 
     // creation d'un vector avec 2 objets Hello construit par defaut :
-    vector<Hello> hello_list(2); // O3, O4
-    // hello_list.reserve(5); // on peut reserver le nombre d'objets en avance pour eviter des copies
-    hello_list.push_back(hello1);            // copy O1 -> O5, O3 -> O6, O4 -> O7
-    hello_list.push_back(Hello("move"));     // O8, move O8 -> O9
-    hello_list.push_back(std::move(hello2)); // move O2 -> 10, ...
+    vector<Hello> hello_vect(2); // O3, O4
+    // hello_vect.reserve(5); // on peut reserver le nombre d'objets en avance pour eviter des copies
+    hello_vect.push_back(hello1);            // copy O1 -> O5, O3 -> O6, O4 -> O7
+    hello_vect.push_back(Hello("move"));     // O8, move O8 -> O9
+    hello_vect.push_back(std::move(hello2)); // move O2 -> 10, ...
     // hello2 a deplace ses attributs :
     hello2.speak(); // rien a dire
     cout << endl;
 
-    for (const auto &hello : hello_list)
+    // on parcour les elements du vector par reference constante
+    for (const auto &hello : hello_vect)
     {
         hello.speak();
     }
