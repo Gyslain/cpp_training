@@ -47,6 +47,14 @@
         "utility": "cpp",
         "sstream": "cpp",
         "cinttypes": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "bitset": "cpp",
+        "complex": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "optional": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     }
 }
