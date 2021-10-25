@@ -1,6 +1,7 @@
-#include "hello.hpp"
+#include "hello.hpp" // on inclut notre fichier d'entete header
+// les "" sont utilises les inclure les fichiers headers locaux.
 
-#include <iostream>
+#include <iostream> // alors que les <> sont utilises pour les headers systemes.
 
 using namespace std;
 

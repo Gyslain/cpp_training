@@ -1,3 +1,6 @@
+// on utilise la directive #pragma once pour que le compilateur
+// insere une seule fois ce fichier entete dans chaque unite de compilation .cpp ou il est inclut.
+// Les variables et les objets ne sont declares qu'une seule fois par unite de compilation.
 #pragma once
 
 #include <string>
