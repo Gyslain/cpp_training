@@ -13,23 +13,28 @@
 using namespace std;
 // Ex. : apres l'instruction using namespace std, on a : string, ::string, std::string representent tous le meme symbole
 
-// exemple de definition de fonctions
-int sum_function(int a, int b)
+// pour l'exemple, nous definissons un espace de nom functions :
+namespace functions
 {
-    cout << "somme entre deux entiers\n";
-    return a + b;
-}
-// l'implementation d'une meme fonction depend de ses parametres
-// On pourra generer automatiquement ces fonctions grace aux templates
-float sum_function(float a, float b)
-{
-    cout << "somme entre deux floats\n";
-    return a + b;
+    // exemple de definition de fonctions
+    int sum_function(int a, int b)
+    {
+        cout << "somme entre deux entiers\n";
+        return a + b;
+    }
+    // l'implementation d'une meme fonction depend de ses parametres
+    // On pourra generer automatiquement ces fonctions grace aux templates
+    float sum_function(float a, float b) // surcharge de sum_function
+    {
+        cout << "somme entre deux floats\n";
+        return a + b;
+    }
 }
 
 int main(int argc, char **argv) // fonction main.
 {
     // Les variables doivent etre declarees.
+    // Elles sont declarees une seul fois. Leur type ne plus changer.
 
     int myNum = 5;                               // Integer (4 bytes)
     float myFloatNum = 5.99;                     // Floating point number (4 bytes)
@@ -60,7 +65,7 @@ int main(int argc, char **argv) // fonction main.
 
     //-------------------
 
-    // maths
+    // pour faire des maths, utiliser le fichier header cmath
     cout << "doing maths...\n";
     cout << "sqrt(64) = " << sqrt(64) << endl;
     cout << "round(2.6) = " << round(2.6) << endl;
@@ -138,10 +143,13 @@ int main(int argc, char **argv) // fonction main.
 
     //-------------------
 
-    // fonctions
+    // fonctions et namespace
     cout << "Appel de sum_function : \n";
-    cout << sum_function(x, y) << endl;
-    cout << sum_function(static_cast<float>(x), static_cast<float>(y)) << endl;
+    cout << functions::sum_function(x, y) << endl; // nous appelons la fonction avec l'operateur de resolution de portee ::
+    // pour eviter d'ecrire functions::, on peut utiliser l'espace de nom en entier :
+    using namespace functions;
+    // On peut maintenant appeler la fonction directement
+    cout << sum_function(static_cast<float>(x), static_cast<float>(y)) << endl; // l'implementation depend ici des parametres
 
     // lambda function, fonction anonyme
     // x est declare en tant que parametre de fonction et y et capture par copie [=]
