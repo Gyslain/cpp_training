@@ -142,6 +142,9 @@ int main(int argc, char **argv)
         cout << "key: " << k.first << ", value: " << k.second << endl;
     cout << endl;
 
+    // Decouvrir les conteneurs de la stl :
+    // https://en.cppreference.com/w/cpp/container
+
     //-------------------
     // Les itérateurs
 
@@ -151,14 +154,25 @@ int main(int argc, char **argv)
     vector<int>::iterator ptr_begin = data2.begin(); // initialisation d'un iterator
     auto it = ptr_begin + 3;                         // deplacement de l'iterateur, il pointe sur 4 maintenant
     cout << "it pointe sur " << *it << endl;
-    // Les iterateurs sont utiles pour les algorithme de la stl :
-    copy(data2.begin(), data2.end(), data.begin()); // copy de data2 dans data
 
+    // Les iterateurs sont utiles pour les algorithme de la stl.
+    // Copie d'elements
+    copy(data2.begin(), data2.end(), data.begin());
     cout << "data : ";
     print(data);
-    sort(data2.begin(), data2.end()); // on tie le tableau
+    // Trie de vector
+    sort(data2.begin(), data2.end());
     cout << "data2 apres sort : ";
     print(data2);
+    // Recherche d'elements
+    it = find(data2.begin(), data2.end(), 2);
+    if (it != data2.end())
+        std::cout << "Element present : " << *it << '\n';
+    else
+        std::cout << "Element non present\n";
+
+    // Decouvrir les algorithmes de la stl :
+    // https://en.cppreference.com/w/cpp/algorithm
 
     //-------------------
 
