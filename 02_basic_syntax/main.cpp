@@ -173,6 +173,8 @@ int main(int argc, char **argv) // fonction main.
     //     return sqrt(x);
     // };
 
+    // another comment
+
     auto my_sqrt = [](float x)
     {
         if (x < 0)
