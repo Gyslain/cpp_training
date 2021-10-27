@@ -165,6 +165,14 @@ int main(int argc, char **argv) // fonction main.
     // exceptions
     cout << "Exceptions :\n";
     // lamda qui peut renvoyer une exception :
+
+    // float my_sqrt(float x)
+    // {
+    //     if (x < 0)
+    //         throw std::invalid_argument("x cannot be negative.");
+    //     return sqrt(x);
+    // };
+
     auto my_sqrt = [](float x)
     {
         if (x < 0)
